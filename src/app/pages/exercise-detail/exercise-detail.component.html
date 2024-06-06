@@ -1,0 +1,101 @@
+<div class="detail">
+  <img [src]="exercise()?.gifUrl" alt="exercise gif" loading="lazy" />
+  <div class="detail-content">
+    <div class="flex">
+      <div class="extra-info">
+        <div class="info">
+          <div class="img">
+            <img src="assets/icons/body-part.png" alt="info image" />
+          </div>
+
+          <p>{{ exercise()?.bodyPart | titlecase }}</p>
+        </div>
+        <div class="info">
+          <div class="img">
+            <img src="assets/icons/target.png" alt="info image" />
+          </div>
+
+          <p>{{ exercise()?.target | titlecase }}</p>
+        </div>
+        <div class="info">
+          <div class="img">
+            <img src="assets/icons/equipment.png" alt="info image" />
+          </div>
+
+          <p>{{ exercise()?.equipment | titlecase }}</p>
+        </div>
+      </div>
+      <div class="text">
+        <h1 class="title">{{ exercise()?.name | titlecase }}</h1>
+        <p>{{ exercise()?.instructions }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="youtube-videos">
+  <h2 class="title">
+    Watch {{ exercise()?.name | titlecase }} exercise videos
+  </h2>
+  <div class="videos">
+    @for(item of youtubeVideos; track $index){
+    <a
+      class="video"
+      href="https://www.youtube.com/watch?v={{ item.video.videoId }}"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="{{ item.video.thumbnails[0].url }}"
+        alt="{{ exercise()?.name }} video"
+      />
+
+      <h5>{{ item.video.title }}</h5>
+
+      <h6 style="color: var(--primary-color)">{{ item.video.channelName }}</h6>
+    </a>
+    }
+  </div>
+</div>
+
+<div class="similar-exersices">
+  <h2 class="title">Similar Exercise</h2>
+  <div
+    style="display: flex; flex-flow: row wrap; gap: 2rem; align-items: center"
+  >
+    <div class="v1">
+      <horizontal-scroll-bar
+        [items]="similarExercises['bodyPart']"
+        [cardTemplate]="exerciseCard"
+        [itemWidth]="300"
+        [itemMargin]="16"
+        (itemSelected)="navigateToExercise($event)"
+        class="item"
+      ></horizontal-scroll-bar>
+    </div>
+    <div class="v2">
+      <horizontal-scroll-bar
+        [items]="similarExercises['target']"
+        [cardTemplate]="exerciseCard"
+        [itemWidth]="300"
+        [itemMargin]="16"
+        (itemSelected)="navigateToExercise($event)"
+        class="item"
+      ></horizontal-scroll-bar>
+    </div>
+    <div class="v3">
+      <horizontal-scroll-bar
+        [items]="similarExercises['equipment']"
+        [cardTemplate]="exerciseCard"
+        [itemWidth]="300"
+        [itemMargin]="16"
+        (itemSelected)="navigateToExercise($event)"
+        class="item"
+      ></horizontal-scroll-bar>
+    </div>
+  </div>
+</div>
+
+<ng-template #exerciseCard let-item="item">
+  <exercise-card [item]="item"></exercise-card>
+</ng-template>

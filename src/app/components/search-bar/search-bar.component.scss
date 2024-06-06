@@ -1,0 +1,23 @@
+:host {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+
+
+  input {
+    flex: 1;
+    padding: 1rem;
+    height: 36px;
+    border: none;
+    font-family: 'Z', sans-serif;
+    color: var(--text-color);
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+
+    &:focus {
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}

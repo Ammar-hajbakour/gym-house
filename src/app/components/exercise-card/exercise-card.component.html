@@ -1,0 +1,13 @@
+<div class="card" (click)="openDetails(item.id)">
+  <div class="image">
+    <img [src]="item.gifUrl" alt="exercise gif" />
+  </div>
+  <div class="content">
+    <p>{{ item.name | titlecase }}</p>
+    <div class="tags">
+      <span>{{ item.bodyPart | titlecase }}</span>
+      <span>{{ item.target | titlecase }}</span>
+      <!-- <span>{{ item.equipment | titlecase }}</span> -->
+    </div>
+  </div>
+</div>

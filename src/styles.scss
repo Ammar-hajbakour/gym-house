@@ -1,1 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  // --accent-color: #8454FC;
+  --primary-color: #fb6b14;
+  // --primary-color: # ;
+  --secondary-color: #e2e1fc;
+  --accent-color: #762dff;
+  --text-color: #333;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+  font-family: 'Z';
+  src: url('assets/fonts/zekton\ rg.otf');
+}
+
+body {
+  font-family: 'Z', sans-serif;
+  background-color: white;
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.box__container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+}
+
+.btn {
+  background-color: var(--accent-color);
+  color: white;
+  font-family: 'Z', sans-serif;
+  border: none;
+  // border-radius: 0 0 50px 0;
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 700;
+
+  @media screen and (max-width: 600px) {
+    font-size: 34px;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 24px;
+  }
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transform: translateX(-12px);
+
+  img {
+    opacity: 0.4;
+  }
+
+  span {
+    font-weight: 600;
+    color: var(--accent-color);
+    opacity: 0.4;
+    user-select: none;
+  }
+
+  span:first-of-type {
+    transform: translateX(12px) translateY(3px);
+  }
+
+  span:last-of-type {
+    transform: translateX(-13px) translateY(3px);
+  }
+
+}
+
+.grid__list .card {
+  &:hover {
+    .image img {
+      filter: contrast(0.9);
+      transform: scale(1.05);
+    }
+  }
+}

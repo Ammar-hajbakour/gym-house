@@ -1,0 +1,141 @@
+:host {
+  display: block;
+  padding-top: 100px;
+
+  @media screen and (max-width: 900px) {
+    padding-top: 0;
+  }
+}
+
+.detail {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+
+  &>img {
+    flex: 1;
+    width: 100%;
+    min-width: 400px;
+    height: auto;
+    filter: contrast(0.9);
+  }
+
+  .detail-content {
+    flex: 1.5;
+    width: 100%;
+    min-width: 400px;
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+
+    p {
+      line-height: 2rem;
+      text-align: justify;
+    }
+
+    .extra-info {
+
+      .info {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        p {
+          font-size: 12px;
+          color: var(--text-color);
+        }
+
+        .img {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #f2f2f2;
+
+          img {
+            width: 30px;
+            filter: invert(0.1);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+    gap: 2rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    &>img {
+      min-width: 100%;
+    }
+
+    .detail-content {
+      min-width: 100%;
+    }
+
+    .extra-info {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .flex {
+      flex-direction: column;
+    }
+  }
+
+}
+
+
+
+.youtube-videos {
+  margin-block: 4rem;
+
+  .videos {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    margin-block: 4rem;
+
+
+    .video {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      max-width: 360px;
+      min-width: 250px;
+      text-decoration: none;
+      color: var(--text-color);
+
+
+      img {
+        width: 100%;
+        filter: brightness(85%);
+        transition: 0.25s linear;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      &:hover {
+        img {
+          filter: brightness(100%);
+        }
+      }
+    }
+  }
+}
+
+.similar-exersices {
+  margin-block: 4rem;
+
+  h2.title {
+    margin-bottom: 4rem;
+  }
+
+}

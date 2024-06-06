@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gym-exercises": {
+    "gym-house": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gym-exercises",
+            "outputPath": "dist/gym-house",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -26,7 +26,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              "src/barbell.png",
               "src/assets"
             ],
             "styles": [
@@ -53,7 +53,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -62,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gym-exercises:build:production"
+              "buildTarget": "gym-house:build:production"
             },
             "development": {
-              "buildTarget": "gym-exercises:build:development"
+              "buildTarget": "gym-house:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "gym-exercises:build"
+            "buildTarget": "gym-house:build"
           }
         },
         "test": {

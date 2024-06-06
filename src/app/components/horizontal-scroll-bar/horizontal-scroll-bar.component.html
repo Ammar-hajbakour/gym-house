@@ -1,0 +1,39 @@
+@if(items){
+<div
+  #scrollRef
+  class="__container"
+  [style.gap.px]="itemMargin"
+  [style.width.px]="itemWidth"
+>
+  @for(item of items; track (item.id || item); let i = $index){
+  <div
+    class="__card"
+    (click)="select(item, i)"
+    [style.min-width.px]="itemWidth"
+  >
+    @if(title){
+    <div class="__title">{{ title | uppercase }}</div>
+    }
+    <ng-container
+      *ngTemplateOutlet="cardTemplate; context: { item: item }"
+    ></ng-container>
+  </div>
+
+  }
+</div>
+
+<div class="__arrows">
+  <div class="__arrow--left" (click)="scroll('left')">
+    <img src="assets/icons/right-arrow.svg" class="__arrow" alt="arrow" />
+  </div>
+  <div class="__arrow--right" (click)="scroll('right')">
+    <img src="assets/icons/right-arrow.svg" alt="arrow" class="__arrow" />
+  </div>
+</div>
+}
+
+<ng-template #defualtTemplate let-item="item">
+  <div class="image">
+    <img [src]="item.imgUrl" alt="gallery" [style.width.px]="itemWidth" />
+  </div>
+</ng-template>

@@ -1,0 +1,42 @@
+<h1 id="exercises" class="title" style="text-align: center; padding-top: 2rem">
+  Awesome Exercises for you
+</h1>
+<search-bar (valueChange)="searchByName($event)"></search-bar>
+<div class="filter">
+  @for(item of filterItems; track (item)){
+  <horizontal-scroll-bar
+    [items]="
+      item === 'bodyPart' ? bodyPart : item === 'equipment' ? equipment : target
+    "
+    [itemWidth]="130"
+    [itemMargin]="16"
+    (itemSelected)="filterBy(item, $event)"
+    [cardTemplate]="selectTemplate"
+    [title]="item"
+    class="filter-item"
+  >
+  </horizontal-scroll-bar>
+  }
+</div>
+@if (exercises()) {
+<p class="result">Showing {{ exercises().length }} results</p>
+<div class="grid__list">
+  @for(item of exercises(); track (item.id || item); let i = $index){
+  <exercise-card
+    [item]="item"
+    (cardClick)="openDetails($event)"
+  ></exercise-card>
+  }
+</div>
+
+} @else {
+<p class="result">No results found</p>
+} @if(exercises().length > 10){
+<div style="text-align: center">
+  <button class="btn" (click)="loadMore()">Load More</button>
+</div>
+}
+
+<ng-template #selectTemplate let-item="item">
+  <p style="font-size: 12px">{{ item.title }}</p>
+</ng-template>
